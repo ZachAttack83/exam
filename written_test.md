@@ -46,7 +46,7 @@ the reason to start with a simple function component is to avoid bloating our ap
 
 ---
 > React.createElement('div', null, () => {
-    return React.createElement('h1', null, () => {
+    return React.createElement('h1', 'headline', () => {
         return 'Hello Dojo!'
     });
 });
