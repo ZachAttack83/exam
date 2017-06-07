@@ -1,6 +1,12 @@
 import React from 'react';
+import { array, func } from 'prop-types'
 
-const RepoResults = () => {
+const RepoResults = ({ repos, selectRepo }) => {
+
+    const handleClick = (event) => {
+        selectRepo(repos[event.target.id]);
+    }
+
     return (
         <div className="row RepoResults">
             <div className="column small-10 small-centered card">
@@ -12,19 +18,17 @@ const RepoResults = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>HTML5-SecurityVideo</td>
-                        </tr>
-                        <tr>
-                            <td>Thinking in React</td>
-                        </tr>
-                        <tr>
-                            <td>Youtube Binge</td>
-                        </tr>
+                    { repos.map((repo, idx) => <tr key={repo.id} onClick={handleClick}><td id={idx}>{repo.name}</td></tr>) }
                     </tbody>
                 </table>
             </div>
         </div>);
 }
+
+RepoResults.propTypes = {
+    repos : array.isRequired,
+    selectRepo : func.isRequired
+};
+
 
 export default RepoResults;

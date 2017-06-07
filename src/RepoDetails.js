@@ -1,6 +1,7 @@
 import React from 'react';
+import { object } from 'prop-types'; 
 
-const RepoDetails = () => {
+const RepoDetails = ({ selectedRepo }) => {
     return (
         <div className="row RepoDetails">
             <div className="column small-5 small-centered card">
@@ -16,14 +17,18 @@ const RepoDetails = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>3,000</td>
-                            <td>5</td>
-                            <td>Javascript</td>
+                            <td>{selectedRepo.watchers}</td>
+                            <td>{selectedRepo.forks}</td>
+                            <td>{selectedRepo.language}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>);
+}
+
+RepoDetails.propTypes = {
+    selectedRepo : object.isRequired
 }
 
 export default RepoDetails;
